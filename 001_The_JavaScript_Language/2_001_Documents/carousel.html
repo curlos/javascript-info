@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- create your markup and styles -->
+
+    <div>
+        <button class="arrow back">⇦</button>
+
+        <ul>
+            <li><img src="https://en.js.cx/carousel/1.png"></li>
+            <li><img src="https://en.js.cx/carousel/2.png"></li>
+            <li><img src="https://en.js.cx/carousel/3.png"></li>
+            <li><img src="https://en.js.cx/carousel/4.png"></li>
+            <li><img src="https://en.js.cx/carousel/5.png"></li>
+            <li><img src="https://en.js.cx/carousel/6.png"></li>
+            <li><img src="https://en.js.cx/carousel/7.png"></li>
+            <li><img src="https://en.js.cx/carousel/8.png"></li>
+            <li><img src="https://en.js.cx/carousel/9.png"></li>
+            <li><img src="https://en.js.cx/carousel/10.png"></li>
+        </ul>
+
+        <button class="arrow forward">⇨</button>
+    </div>
+
+
+    <script>
+        const numberOfShownImages = 3;
+        let i = 0;
+        const allLiElems = document.querySelectorAll('li');
+
+        const changeImages = () => {
+            console.log(i);
+            allLiElems.forEach((liElem, index) => {
+                if (index >= i && index < i + numberOfShownImages) {
+                    liElem.style.display = 'block';
+                } else {
+                    liElem.style.display = 'none';
+                }
+            });
+        };
+
+        changeImages();
+
+        document.querySelector('.back').addEventListener('click', () => {
+            if (i - numberOfShownImages < 0) {
+                i = 0;
+            } else {
+                i -= numberOfShownImages;
+            }
+
+            changeImages();
+        });
+
+        document.querySelector('.forward').addEventListener('click', () => {
+            if (i + numberOfShownImages < allLiElems.length) {
+                i += numberOfShownImages;
+            }
+
+            changeImages();
+        })
+
+    </script>
+
+</body>
+
+</html>
